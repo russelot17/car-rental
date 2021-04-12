@@ -1,0 +1,17 @@
+<div class="car-list">
+  <div>
+      <app-car
+        *ngFor="let car of staticList()"
+        [id]="car.id"
+        [name]="car.name"
+        [type]="car.type"
+        [transmission]="car.transmission"
+        [fuel]="car.fuel"
+        [cost]="car.costPerDay"
+        [image]="car.img"
+        [isAvailable]="car.isAvailable"
+        (days)="rentCar($event)"
+      ></app-car>
+  </div>
+  <input type="button" value="Add a Car" routerLink="/add"/>
+</div>

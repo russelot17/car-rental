@@ -1,0 +1,49 @@
+.add-form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+/* .main-menu {
+    width: 60%;
+    height: 90vh;
+    margin: auto;
+} */
+
+.outer-form {
+    display: flex;
+    justify-content: center;
+}
+
+
+.inputs {
+    width: 40%;
+    margin-bottom: 20px;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+img {
+    width: 300px;
+}
+
+.image-preview {
+    border: 2px solid black;
+    width: 500px;
+    height: 500px;
+}
+
+.txtIn {
+    width: 90%;
+    height: 30px;
+    border-radius: 20px;
+    text-align: center;
+    outline: none;
+}
+
+#image-container {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

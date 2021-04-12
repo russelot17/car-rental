@@ -1,0 +1,54 @@
+<div class="main-menu">
+  <div class="outer-form">
+    <div class="add-form">
+      <label for="carName">Name: </label>
+      <input type="text" id="carName" class="inputs txtIn" />
+      <label>Cost/Day: </label>
+      <input type="text" id="carCost" class="inputs txtIn" />
+      <label>Car Type: </label>
+      <select id="carType" class="inputs">
+        <option value="Sedan">Sedan</option>
+        <option value="Hatchback">Hatchback</option>
+        <option value="Suv">SUV</option>
+      </select>
+      <label>Transmission: </label>
+      <select id="carTrans" class="inputs">
+        <option value="Automatic">Automatic</option>
+        <option value="Manual">Manual</option>
+      </select>
+      <label>Fuel: </label>
+      <select id="carFuel" class="inputs">
+        <option value="Diesel">Diesel</option>
+        <option value="Petrol">Petrol</option>
+      </select>
+      <label for="imageURL">Image Link: </label>
+      <input type="text" id="img-input" class="inputs txtIn" />
+      <input
+        type="button"
+        id="imgCheck"
+        class="inputs"
+        value="Check image"
+        (click)="displayImage()"
+      />
+      <div>
+        <input
+        id="back"
+        type="button"
+        class="inputs addBtn"
+        value="Back"
+        (click)="back()"
+      />
+      <input
+        type="button"
+        class="inputs addBtn"
+        value="Edit car"
+        (click)="editCar()"
+      />
+      
+    </div>
+  </div>
+    <div class="image-preview">
+      <img id="image-container" [src]="image"/>
+    </div>
+  </div>
+</div>

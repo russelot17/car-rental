@@ -1,0 +1,28 @@
+<div class="car-card">
+    <div class="car-image">
+        <img [src]="image">
+    </div>
+    <div class="car-details">
+        <div class="name">
+            {{ name }}
+        </div>
+        <div class="sub-details">
+            - {{ type }}
+        </div>
+        <div class="sub-details">
+            - {{ transmission }}
+        </div>
+        <div class="sub-details">
+            - {{ fuel }}
+        </div>
+    </div>
+    <div class="rent-cost">
+        <div>
+            ₱ {{ cost }}/day
+        </div>
+        <input type="button" id="renturn" [value]="getValue()" (click)="onClick()" [ngStyle]="{backgroundColor: getColor()}">
+        <input type="button" value="Edit" (click)="editCar()">
+        <input type="button" value="Delete" (click)="deleteCar()">
+    </div>
+    
+</div>

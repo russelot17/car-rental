@@ -1,0 +1,35 @@
+img {
+    width: 200px;
+}
+
+.car-card {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.car-details {
+    margin-left: 20px;
+    margin-right: 80px;
+}
+
+input {
+    height: 5vh;
+    width: 10vw;
+    margin-bottom: 5px;
+}
+
+ .name {
+     font-size: 2.0rem;
+ }
+
+ .rent-cost {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
+
+ .sub-details {
+     font-size: .9em;
+ }
