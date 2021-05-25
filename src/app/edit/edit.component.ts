@@ -19,9 +19,10 @@ export class EditComponent implements OnInit {
   ngOnInit(): void {
     let db = this.store.collection('cars');
     this.args = this.route.snapshot.params;
+
     db.get().subscribe((ss) => {
       ss.docs.forEach((doc) => {
-        if (doc.get('id') == this.args['id']) {
+        if (doc.id == this.args['id']) {
           (<HTMLInputElement>(
             document.getElementById('carName')
           )).value = doc.get('name');
@@ -46,7 +47,7 @@ export class EditComponent implements OnInit {
 
   editCar() {
     const db = this.store.collection('cars');
-
+    this.args = this.route.snapshot.params;
     let name = (<HTMLInputElement>document.getElementById('carName')).value;
     let cost = +(<HTMLInputElement>document.getElementById('carCost')).value;
     let type = (<HTMLInputElement>document.getElementById('carType')).value;
@@ -57,23 +58,14 @@ export class EditComponent implements OnInit {
       alert('Please upload an image!');
       return;
     }
-    db.snapshotChanges().subscribe((actions) => {
-      return actions.map((a) => {
-        const dc = db.doc(a.payload.doc.id);
-        dc.get().subscribe((ss) => {
-          if (ss.get('id') == this.args.id) {
-            dc.update({
-              name: name,
-              costPerDay: cost,
-              type: type,
-              transmission: transmission,
-              fuel: fuel,
-              image: this.image,
-            });
-          }
-        });
-      });
-    });
+    db.doc(this.args['id']).update({
+      name: name,
+      fuel: fuel,
+      image: this.image,
+      transmission: transmission,
+      type: type,
+      costPerDay: cost,
+    })
 
     alert('Edit successful!');
     

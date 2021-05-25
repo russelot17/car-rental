@@ -20,7 +20,7 @@
         <div>
             ₱ {{ cost }}/day
         </div>
-        <input type="button" id="renturn" [value]="getValue()" (click)="onClick()" [ngStyle]="{backgroundColor: getColor()}">
+        <input type="button" id="renturn" [value]="getValue()" (click)="rentReturn()" [ngStyle]="{backgroundColor: getColor()}">
         <input type="button" value="Edit" (click)="editCar()">
         <input type="button" value="Delete" (click)="deleteCar()">
     </div>

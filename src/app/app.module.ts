@@ -12,6 +12,8 @@ import { CarComponent } from './cars/car/car.component';
 import { HeaderComponent } from './header/header.component';
 import { environment } from 'src/environments/environment';
 import { EditComponent } from './edit/edit.component';
+import { ReviewComponent } from './review/review.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,12 +24,14 @@ import { EditComponent } from './edit/edit.component';
     CarComponent,
     HeaderComponent,
     EditComponent,
+    ReviewComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

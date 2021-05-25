@@ -17,6 +17,7 @@ export class AddComponent implements OnInit {
   ngOnInit(): void {}
 
   addCar() {
+    let db = this.store.collection('cars');
     let name = (<HTMLInputElement>document.getElementById('carName')).value;
     let cost = +(<HTMLInputElement>document.getElementById('carCost')).value;
     let type = (<HTMLInputElement>document.getElementById('carType')).value;
@@ -27,18 +28,16 @@ export class AddComponent implements OnInit {
       alert('Please upload an image!');
       return;
     }
-    let id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
-    while (this.checkDuplicateID(id)) {
-      id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
-    }
-    this.store.collection('cars').add({
-      id: id,
+    db.add({
       name: name,
       costPerDay: cost,
       type: type,
       transmission: transmission,
       fuel: fuel,
       image: this.img,
+      isRented: false,
+      review: [],
+      starRatings: [],
     });
     this.router.navigate(['/']);
     alert('Car has been added');
@@ -49,12 +48,5 @@ export class AddComponent implements OnInit {
     this.img = (<HTMLImageElement>(
       document.getElementById('image-container')
     )).src = image;
-  }
-
-  checkDuplicateID(id: number) {
-    for (let i = 0; i < CarsComponent.carList.length; i++) {
-      if (id == CarsComponent.carList[i].id) return true;
-    }
-    return false;
   }
 }

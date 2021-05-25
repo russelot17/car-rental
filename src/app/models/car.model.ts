@@ -1,22 +1,23 @@
 export class Car {
-  id: number;
+  id: string;
   name: string;
   type: string;
   transmission: string;
   fuel: string;
   img: string;
   costPerDay: number;
-  isAvailable: boolean;
+  isRented: boolean;
   daysRented?: Number;
 
   constructor(
-    id: any,
+    id: string,
     name: string,
     type: string,
     transmission: string,
     fuel: string,
     cost: number,
-    img: string
+    img: string,
+    isRented: boolean
   ) {
     this.id = id;
     this.name = name;
@@ -25,7 +26,7 @@ export class Car {
     this.fuel = fuel;
     this.img = img;
     this.costPerDay = cost;
-    this.isAvailable = true;
+    this.isRented = isRented;
   }
 
   get carID() {

@@ -19,13 +19,14 @@ export class CarsComponent implements OnInit {
     db.get().subscribe((ss) => {
       ss.docs.forEach((doc) => {
         let car = new Car(
-          doc.get('id'),
+          doc.id,
           doc.get('name'),
           doc.get('type'),
           doc.get('transmission'),
           doc.get('fuel'),
           doc.get('costPerDay'),
-          doc.get('image')
+          doc.get('image'),
+          doc.get('isRented'),
         );
         CarsComponent.carList.push(car);
       });
@@ -35,7 +36,7 @@ export class CarsComponent implements OnInit {
     return CarsComponent.carList;
   }
 
-  rentCar(e: Number[]) {
+  rentCar(e: [string, number, number]) {
     let car = CarsComponent.carList.find((car: any) => e[0] == car.carID);
     if (e[2] == 1) {
       car!.setDays(e[1]);
@@ -50,5 +51,16 @@ export class CarsComponent implements OnInit {
       }
       alert('Your bill is ₱' + pay);
     }
+  }
+
+
+  deleteCar(id: string) {
+    let db = this.store.collection('cars');
+    var newList = CarsComponent.carList.filter(function(value) {
+      return value.id != id;
+    })
+    CarsComponent.carList = newList
+    db.doc(id).delete();
+    alert('Car has been deleted successfully!');
   }
 }

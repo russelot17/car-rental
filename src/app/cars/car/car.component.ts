@@ -8,22 +8,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./car.component.css'],
 })
 export class CarComponent implements OnInit {
-  @Input() id: any;
+  @Input() id: string = '';
   @Input() name: string = '';
   @Input() type: string = '';
   @Input() transmission: string = '';
   @Input() fuel: string = '';
   @Input() cost: Number = 0;
   @Input() image: string = '';
-  @Input() isAvailable: boolean = true;
-  @Output() days = new EventEmitter<Number[]>();
+  @Input() isRented: boolean = true;
+  @Output() days = new EventEmitter<[string, number, number]>();
+  @Output() delete = new EventEmitter<string>();
 
   constructor(private router: Router, private store: AngularFirestore) {}
 
   ngOnInit(): void {}
 
-  onClick() {
-    if (this.isAvailable) {
+  rentReturn() {
+    let db = this.store.collection('cars');
+    if (!this.isRented) {
       let days = prompt('How many days to rent?');
       if (days == null) return;
       this.days.emit([this.id, +days, 1]);
@@ -31,16 +33,18 @@ export class CarComponent implements OnInit {
       let days = prompt('How many days did you return?');
       if (days == null) return;
       this.days.emit([this.id, +days, 0]);
+      this.router.navigate(['/review', this.id])
     }
-    this.isAvailable = !this.isAvailable;
+    this.isRented = !this.isRented;
+    db.doc(this.id).update({ isRented: this.isRented });
   }
 
   getColor() {
-    return this.isAvailable ? 'yellowgreen' : 'Tomato';
+    return !this.isRented ? 'yellowgreen' : 'Tomato';
   }
 
   getValue() {
-    return this.isAvailable ? 'Rent' : 'Return';
+    return !this.isRented ? 'Rent' : 'Return';
   }
 
   editCar() {
@@ -48,19 +52,9 @@ export class CarComponent implements OnInit {
   }
 
   deleteCar() {
-    if (confirm("Delete this car?") == false) return;
-    const db = this.store.collection('cars');
-    db.snapshotChanges().subscribe((actions) => {
-      return actions.map((a) => {
-        const dc = db.doc(a.payload.doc.id);
-        dc.get().subscribe((ss) => {
-          if (ss.get('id') == this.id) {
-            dc.delete();
-          }
-        });
-      });
-    });
-    alert("Car has been deleted! Please refresh the page to see changes...");
+    if (confirm('Delete this car?') == false) return;
+    this.delete.emit(this.id)
   }
+
   
 }
