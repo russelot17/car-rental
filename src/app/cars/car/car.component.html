@@ -1,28 +1,37 @@
-<div class="car-card">
+<div id="car">
+  <div class="car-card">
     <div class="car-image">
-        <img [src]="image">
+      <img id="carImg" [src]="image" />
     </div>
     <div class="car-details">
-        <div class="name">
-            {{ name }}
-        </div>
-        <div class="sub-details">
-            - {{ type }}
-        </div>
-        <div class="sub-details">
-            - {{ transmission }}
-        </div>
-        <div class="sub-details">
-            - {{ fuel }}
-        </div>
+      <div class="name">
+        {{ name }}
+      </div>
+      <div class="sub-details">- {{ type }}</div>
+      <div class="sub-details">- {{ transmission }}</div>
+      <div class="sub-details">- {{ fuel }}</div>
     </div>
     <div class="rent-cost">
-        <div>
-            ₱ {{ cost }}/day
-        </div>
-        <input type="button" id="renturn" [value]="getValue()" (click)="rentReturn()" [ngStyle]="{backgroundColor: getColor()}">
-        <input type="button" value="Edit" (click)="editCar()">
-        <input type="button" value="Delete" (click)="deleteCar()">
+      <div>₱ {{ cost }}/day</div>
+      <input
+        class="btns sdBtn"
+        type="button"
+        id="renturn"
+        [value]="getValue()"
+        (click)="rentReturn()"
+        [ngStyle]="{ backgroundColor: getColor() }"
+      />
+      <input class="btns sdBtn" type="button" value="Edit" (click)="editCar()" />
+      <input class="btns sdBtn" type="button" value="Delete" (click)="deleteCar()" />
     </div>
-    
+  </div>
+  <div id="reviews">
+    <input
+      id="review"
+      class="btns"
+      type="button"
+      value="Show Ratings and Reviews"
+      (click)="reviewScreen()"
+    />
+  </div>
 </div>

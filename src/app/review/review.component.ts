@@ -28,6 +28,7 @@ export class ReviewComponent implements OnInit {
     this.args = this.route.snapshot.params;
     starsEl!.innerHTML = '';
     var textarea = <HTMLInputElement>document.getElementById('textarea');
+    var submitBtn = (<HTMLInputElement>document.getElementById("submit"))
     var text = textarea.value;
     text = text.replace(
       /http[s]?:\/\/(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*(),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+/g,
@@ -43,6 +44,8 @@ export class ReviewComponent implements OnInit {
     this.httpClient
       .get('http://127.0.0.1:1217/sentiment/' + text)
       .subscribe((data) => {
+        submitBtn.disabled = true;
+        submitBtn.style.backgroundColor = 'grey'
         this.ratings = data as JSON;
         this.starEquivalent();
         revList.push(textarea.value);

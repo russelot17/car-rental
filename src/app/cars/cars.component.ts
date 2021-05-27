@@ -26,6 +26,8 @@ export class CarsComponent implements OnInit {
           doc.get('fuel'),
           doc.get('costPerDay'),
           doc.get('image'),
+          doc.get('starRatings'),
+          doc.get('review'),
           doc.get('isRented'),
         );
         CarsComponent.carList.push(car);

@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environment';
 import { EditComponent } from './edit/edit.component';
 import { ReviewComponent } from './review/review.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReviewsComponent } from './reviews/reviews.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     EditComponent,
     ReviewComponent,
+    ReviewsComponent,
   ],
   imports: [
     BrowserModule,

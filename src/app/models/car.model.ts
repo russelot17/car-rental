@@ -7,6 +7,8 @@ export class Car {
   img: string;
   costPerDay: number;
   isRented: boolean;
+  averageStars: Array<number>;
+  reviews: Array<string>;
   daysRented?: Number;
 
   constructor(
@@ -17,6 +19,8 @@ export class Car {
     fuel: string,
     cost: number,
     img: string,
+    averageStars: Array<number>,
+    reviews: Array<string>,
     isRented: boolean
   ) {
     this.id = id;
@@ -26,6 +30,8 @@ export class Car {
     this.fuel = fuel;
     this.img = img;
     this.costPerDay = cost;
+    this.averageStars = averageStars;
+    this.reviews = reviews;
     this.isRented = isRented;
   }
 

@@ -1,0 +1,11 @@
+<h3>Average Rating for {{ args["name"] }}</h3>
+<div id="stars"></div>
+<h1>Reviews on {{ args["name"] }}</h1>
+<div class="container">
+  <div class="reviewCard" *ngFor="let review of reviews">
+    <p>{{ '"' + review + '"' }}</p>
+  </div>
+  <div class="buttons">
+    <input type="button" value="Back" (click)="back()" />
+  </div>
+</div>

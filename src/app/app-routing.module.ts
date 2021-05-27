@@ -4,24 +4,29 @@ import { AddComponent } from './add/add.component';
 import { CarsComponent } from './cars/cars.component';
 import { EditComponent } from './edit/edit.component';
 import { ReviewComponent } from './review/review.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 
 const routes: Routes = [
   {
     path: 'add',
-    component: AddComponent
+    component: AddComponent,
   },
   {
     path: 'edit/:id',
-    component: EditComponent
+    component: EditComponent,
   },
   {
     path: '',
-    component: CarsComponent
+    component: CarsComponent,
   },
   {
     path: 'review/:id',
-    component: ReviewComponent
-  }
+    component: ReviewComponent,
+  },
+  {
+    path: 'reviews/:id/:name',
+    component: ReviewsComponent,
+  },
 ];
 
 @NgModule({
